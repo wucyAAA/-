@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+</head>
+<body>
+    <script>
+       
+        xhr=new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState===4&&xhr.status===200){
+                // response = (new Function(`return ${xhr.responseText}`)())
+                console.log(JSON.parse(xhr.response));
+            }
+        }
+        //使用XMLHttpRequest对象发送请求
+        xhr.open("get","./test.js",true);//创建请求
+        xhr.responseType = 'text';
+        xhr.send(null);//发送请求
+
+        // xhr.response + 设置xhr.responseType='json'，可以自动将请求回的json文件转化为js对象或数组
+        // (new Function(`return ${xhr.responseText}`)()) 将请求返回的js文件转换为js对象或数组
+    </script>
+</body>
+</html>
